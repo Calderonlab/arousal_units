@@ -1,0 +1,16 @@
+function dis_c=Zscore2Scaler(z)
+
+%THIS SCRIPT TRANSFORMS EACH ZSCORED PAIR INTO A ZSCORED SCALER
+%IF BOTH ZSCORED GAMMA AND ZSCORED THETA WERE EITHER POSITIVE OR NEGATIVE, WE
+%SUMMED THEM UP TO OBTAIN THE ZSCORED SCALER; OTHERWISE, THE ZSCORED SCALER
+%EQUALED ZSCORED GAMMA OR THETA, WHICHEVER WAS NEGATIVE
+
+dis_c=[];
+for i=1:size(z,1)
+    if z(i,1)*z(i,2)>0
+        dis_c(i,1)=sum(z(i,:));
+    else
+        dis_c(i,1)=min(z(i,:));
+    end
+    
+end
